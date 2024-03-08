@@ -19,7 +19,7 @@ class Solution {
             }
         }
         
-        Collections.sort(charList, (a, b) -> count[b] - count[a]);
+        charList.sort((a, b) -> count[b] - count[a]);
         
         for (char c : charList) {
             str.append(c);
