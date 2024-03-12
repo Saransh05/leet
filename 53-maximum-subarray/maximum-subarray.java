@@ -10,6 +10,7 @@ class Solution {
             s=0;
            }
         }
+        System.gc();
         return sum;
     }
 }
