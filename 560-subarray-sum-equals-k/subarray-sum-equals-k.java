@@ -1,18 +1,16 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        int c=0;
+        HashMap<Integer,Integer> h=new HashMap<>();
+        int count=0;
+        int presum=0;
+        h.put(0,1);
         for(int i=0;i<nums.length;i++)
         {
-            int sum=0;
-            for(int j=i;j<nums.length;j++)
-            {
-                sum=sum+nums[j];
-                if(sum==k)
-                {
-                    c=c+1;
-                }
-            }
+          presum=presum+nums[i];
+          int rem=presum-k;
+          count =count+h.getOrDefault(rem,0);
+          h.put(presum,h.getOrDefault(presum,0)+1);
         }
-        return c;
+        return count;
     }
 }
