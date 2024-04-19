@@ -25,21 +25,13 @@ public class Solution {
                 break;
             }
         }
-       if(!loop)return null;
-        HashSet<ListNode> s=new HashSet<ListNode>();
-         ListNode temp=head;
-         while(temp!=null)
-         {
-            if(s.contains(temp))
-            {
-                return temp;
-            }
-            else{
-                s.add(temp);
-                temp=temp.next;
-            }
-         }
-       
-        return null;
+        if(!loop)return null;
+         slow =head;
+        while(slow!=fast)
+        {
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow;
     }
 }
