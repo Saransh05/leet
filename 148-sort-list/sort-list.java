@@ -12,13 +12,13 @@ class Solution {
     public ListNode sortList(ListNode head){
         ArrayList<Integer> a= new ArrayList<Integer>();
         ListNode temp=head;
-        Comparator<Integer> com=Comparator.naturalOrder();
+        // Comparator<Integer> com=Comparator.naturalOrder();
         while(temp!=null)
         {
             a.add(temp.val);
             temp=temp.next;
         }
-        a.sort(com);
+        Collections.sort(a);
         temp=head;
         int i=0;
         while(temp!=null)
