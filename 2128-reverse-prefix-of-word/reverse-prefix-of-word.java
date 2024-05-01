@@ -2,16 +2,10 @@ class Solution {
     public String reversePrefix(String word, char ch) {
         String str="",str2="";
         String ans="";
-        for(int i=0;i<word.length();i++)
-        {
-            char c=word.charAt(i);
-            if(ch==c)
-            {
-                 str=word.substring(0,i+1);
-                 str2=word.substring(i+1);
-                 break;
-            }
-        }
+        int in=word.indexOf(ch);
+        str=word.substring(0,in+1);
+        str2=word.substring(in+1);
+        
         if(str.equals(""))
         {
             return word;
