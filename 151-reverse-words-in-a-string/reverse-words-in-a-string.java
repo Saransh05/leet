@@ -1,34 +1,25 @@
 class Solution {
     public String reverseWords(String s) {
-        int i;
-        String str1="",str2="",str3="",str4="";
-        for(i=0;i<s.length();i++)
-        {
-            if(s.charAt(i)==' ')
-            {
-               str2=str1+" "+str2;
-               str1="";
-            }
-            else{
-                str1=str1+s.charAt(i);
-            }
-        }
-        str2=str1+" "+str2;
-        str2=str2.trim();
-        for(i=0;i<str2.length();i++)
-        { 
-            str3=str3+str2.charAt(i);
-            if(str2.charAt(i)==' ' && str3.charAt(0)!=' ')
-            {
-               str4=str4+str3;
-               str3=" ";
-            }
-            if(str3.charAt(0)==' ')
-            {
-                str3="";
+        s = s.trim(); // Remove leading and trailing spaces
+        int n = s.length();
+        String str = "";
+        String str1 = "";
+        
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == ' ') {
+                if (!str1.isEmpty()) { // Only add non-empty words
+                    str = str1 + " " + str; // Add the word to the result in reverse order
+                    str1 = ""; // Reset the temporary word holder
+                }
+            } else {
+                str1 += s.charAt(i); // Build the current word
             }
         }
-        str4=str4+str3;
-        return str4;
+        
+        // Add the last word (since it won't be followed by a space)
+        str = str1 + " " + str;
+        str = str.trim(); // Remove the extra space at the end
+        
+        return str;
     }
 }
