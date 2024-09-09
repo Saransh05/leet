@@ -1,30 +1,27 @@
-import java.util.*;
-
 class Solution {
     public String frequencySort(String s) {
-        int[] count = new int[256];
-        StringBuilder str = new StringBuilder();
-        Arrays.fill(count, 0);
-        
-        for (char c : s.toCharArray()) {
-            count[c]++;
+        int l=s.length();
+        Map<Character,Integer> map1=new HashMap<>();
+        String str="";
+        for(int i=0;i<l;i++)
+        {
+            map1.put(s.charAt(i),map1.getOrDefault(s.charAt(i),0)+1);
         }
-        
-        List<Character> charList = new ArrayList<>();
-        for (int i = 0; i < 256; i++) {
-            if (count[i] != 0) {
-                for (int j = 0; j < count[i]; j++) {
-                    charList.add((char)i);
+        for(int i=l;i>0;i--)
+        {
+                   if (map1.containsValue(i)) {
+            for (Map.Entry<Character,Integer> entry : map1.entrySet()) {
+                if (entry.getValue().equals(i)) {
+                    int j=i;
+                    while(j>0){
+                    str += entry.getKey();   
+                    j--;
+                    }
                 }
             }
         }
-        
-        charList.sort((a, b) -> count[b] - count[a]);
-        
-        for (char c : charList) {
-            str.append(c);
         }
-        
-        return str.toString();
+
+        return str;
     }
 }
